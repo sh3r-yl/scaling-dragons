@@ -2,21 +2,26 @@
 @import "setting";
 @import "edje";
 
-body {
-  background-color: #000;
-}
+/* GENERAL */
 
 h1 {
   letter-spacing: 3px;
   text-transform: uppercase;
+
+  margin-bottom: 50px;
 }
 
 h2 {
+  font-size: 1.3em;
+  letter-spacing: 3px;
+  text-transform: uppercase;
   
   @include below(mini) {
     line-height: 50px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
+  }
+
+  @include below(320px) {
+    font-size: 1.5em;
   }
 }
 
@@ -30,16 +35,16 @@ a:hover {
 }
 
 .overlay {
-  background: url('../images/wallpaper-2.jpg') 50% 0 no-repeat;
+  background: 50% 0 no-repeat;
   background-size: cover;
-  -webkit-filter: blur(5px);
-  filter: blur(5px);
+  -webkit-filter: blur(7px);
+  filter: blur(7px);
+
   opacity: 0.5;
 
   position: fixed;
   top: 0;
   bottom: 0;
-  left: -5px;
   width: 100%;
   z-index: -1;
 
@@ -52,21 +57,86 @@ a:hover {
   text-align: center;
 }
 
+.flip-container {
+  perspective: 1000px;
+
+  text-align: center;
+
+  .flipper {
+    transition: 0.6s;
+    transform-style: preserve-3d;
+
+    position: relative;
+  }
+
+  .front, .back {
+    backface-visibility: hidden;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .front {
+    z-index: 2;
+    /* for firefox 31 */
+    transform: rotateY(0deg);
+  }
+
+  .back {
+    transform: rotateY(180deg);
+  }
+}
+
+.flip-container, .front, .back {
+  width: 100%;
+  height: auto;
+}
+
+.flip {
+  transform: rotateY(180deg);
+}
+
 .card {
   background: url('../images/tarot.svg') 50% 0 no-repeat;
   height: 680px;
 
   text-align: center;
 
-  padding: 120px 80px;
+  padding: 80px 50px;
+
+  @include below(mini) {
+    padding: 120px 80px;
+  }
+
+  @include below(380px) {
+    padding: 90px 70px;
+  }
+
+  @include below(320px) {
+    padding: 80px 50px;
+  }
 
   img {
-    width: 200px;
+    width: 140px;
     margin-bottom: 20px;
+
+    @include below(mini) {
+      width: 200px;
+    }
+
+    @include below(360px) {
+      width: 180px;
+    }
+
+    @include below(320px) {
+      width: 160px;
+      margin-bottom: 10px;
+    }
   }
 }
 
-/* MOBILE */
+/* MOBILE STUFF*/
 /* NAV */
 .mobile-menu {
   background-color: #222;
@@ -75,6 +145,7 @@ a:hover {
 
   position: fixed;
   top: 0;
+  z-index: z(menu);
 
   text-align: center;
   line-height: 50px;
@@ -87,6 +158,7 @@ a:hover {
 
   position: fixed;
   top: 50px;
+  z-index: z(menu);
 
   display: none;
 
@@ -97,6 +169,6 @@ a:hover {
 
 /* CONTENT */
 .mobile-content {
-  padding: 50px 0;
+  padding: 10px 0;
   margin-top: 50px;
 }

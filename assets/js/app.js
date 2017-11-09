@@ -9,16 +9,19 @@ function start() {
   app.init();
   animateOnScroll.init();
 
-  window.onload = choosePic;
-  var myPix = new Array("../images/wallpaper-1.jpg", "../images/wallpaper-2.jpg", "../images/wallpaper-3.jpg", "../images/wallpaper-4.jpg", "../images/wallpaper-5.jpg", "../images/wallpaper-6.jpg");
-  function choosePic() {
-    var randomNum = Math.floor((Math.random() * myPix.length));
-    $("#wallpaper").style.backgroundImage =
-        "url(" + myPix[randomNum] + ")";
+  window.onload = randomizeBackground;
+  var wallpapers = new Array("assets/images/wallpaper-1.jpg", "assets/images/wallpaper-2.jpg", "assets/images/wallpaper-3.jpg", "assets/images/wallpaper-4.jpg", "assets/images/wallpaper-5.jpg", "assets/images/wallpaper-6.jpg");
+  function randomizeBackground() {
+    var randomNum = Math.floor((Math.random() * wallpapers.length));
+    $("#wallpaper").css("background-image", "url("+ wallpapers[randomNum] + ")");
   }
 
   $(".mobile-menu").click(function(){
     $(".menu-toggle").slideToggle(200);
+  });
+
+  $(".barbarian").click(function() {
+    $(".flipper").toggleClass("flip");
   });
 }
 

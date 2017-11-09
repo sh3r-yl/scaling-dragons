@@ -28,7 +28,22 @@
         <h1>Classes</h1>
       </h-column>
 
-      
+      <h-row>
+        <h-column class="large-3">
+          <div class="flip-container barbarian">
+            <article class="flipper">
+              <div class="front card">
+                <img src="assets/images/barbarian.png">
+                <h2>Barbarian</h2>
+              </div>
+
+              <div class="back card">
+                back
+              </div>
+            </article>
+          </div>
+        </h-column>
+      </h-row>
     </h-row>
   </section>
 
@@ -42,10 +57,18 @@
     </nav>
     <h-row>
       <h-column class="small-12">
-        <article class="card">
-          <img src="assets/images/barbarian.png">
-          <h2>Barbarian</h2>
-        </article>
+        <div class="flip-container barbarian">
+          <article class="flipper">
+            <div class="front card">
+              <img src="assets/images/barbarian.png">
+              <h2>Barbarian</h2>
+            </div>
+
+            <div class="back card">
+              back
+            </div>
+          </article>
+        </div>
       </h-column>
     </h-row>
   </section>
@@ -74,4 +97,5 @@
   Dungeon & Dragons Favicon
   Tarot Card Image: https://www.vecteezy.com/vector-art/127516-free-tarot-card-back-design-vector
   Framework: https://github.com/hrsetyono/edje
+  Card Flip Tutorial (I edited it to toggle on click): https://davidwalsh.name/css-flip
 -->
