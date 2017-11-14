@@ -1,4 +1,4 @@
-var base = "http://www.dnd5eapi.co/api/";
+var base = "https://www.dnd5eapi.co/api/";
 var randomNumber;
 
 $.ajax({
