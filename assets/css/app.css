@@ -11,6 +11,16 @@ a { color: #fff; }
 
 a:hover { color: #f2f2f2; transition: all 0.3s ease-in-out; }
 
+[class*="tile"] > li { margin-bottom: 10px; }
+
+ul { list-style-type: none; }
+
+::-webkit-scrollbar-track { -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3); border-radius: 3px; background-color: #180003; }
+
+::-webkit-scrollbar { width: 6px; background-color: #180003; }
+
+::-webkit-scrollbar-thumb { border-radius: 3px; -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3); background-color: #B4905C; }
+
 .overlay { background: 50% 0 no-repeat; background-size: cover; -webkit-filter: blur(7px); filter: blur(7px); opacity: 0.5; position: fixed; top: 0; bottom: 0; width: 100%; z-index: -1; overflow: hidden; }
 
 .content { padding: 150px 0; text-align: center; }
@@ -25,25 +35,39 @@ a:hover { color: #f2f2f2; transition: all 0.3s ease-in-out; }
 
 .flip-container .back { transform: rotateY(180deg); }
 
-.flip-container, .front, .back { width: 100%; height: auto; }
+.flip-container, .front, .back { width: 100%; height: 480px; }
+
+@media only screen and (max-width: 480px) { .flip-container, .front, .back { height: 590px; } }
+
+@media only screen and (max-width: 360px) { .flip-container, .front, .back { height: 570px; } }
+
+@media only screen and (max-width: 320px) { .flip-container, .front, .back { height: 490px; } }
 
 .flip { transform: rotateY(180deg); }
 
-.card { background: url("../images/tarot.svg") 50% 0 no-repeat; height: 680px; text-align: center; padding: 80px 50px; }
+.card { background: url("../images/tarot.svg") 50% 0 no-repeat; text-align: center; padding: 80px 50px; margin-bottom: 10px; }
 
-@media only screen and (max-width: 480px) { .card { padding: 120px 80px; } }
+@media only screen and (max-width: 480px) { .card { padding: 90px 80px; } }
 
 @media only screen and (max-width: 380px) { .card { padding: 90px 70px; } }
 
 @media only screen and (max-width: 320px) { .card { padding: 80px 50px; } }
 
-.card img { width: 140px; margin-bottom: 20px; }
+.card img { width: 140px; max-height: 260px; margin-bottom: 20px; }
 
-@media only screen and (max-width: 480px) { .card img { width: 200px; } }
+@media only screen and (max-width: 480px) { .card img { width: 200px; margin-bottom: 10px; } }
 
 @media only screen and (max-width: 360px) { .card img { width: 180px; } }
 
-@media only screen and (max-width: 320px) { .card img { width: 160px; margin-bottom: 10px; } }
+@media only screen and (max-width: 320px) { .card img { width: 160px; } }
+
+.card p { margin-bottom: 10px; }
+
+.card span:after { content: ", "; }
+
+.card span:last-child:after { content: ""; }
+
+.card .card-content { height: 300px; overflow: auto; padding-right: 10px; }
 
 /* MOBILE STUFF*/
 /* NAV */

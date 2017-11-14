@@ -20,9 +20,10 @@ function start() {
     $(".menu-toggle").slideToggle(200);
   });
 
-  $(".barbarian").click(function() {
-    $(".flipper").toggleClass("flip");
+  $("body").on("click", ".card", function() {
+    $(" .flipper").toggleClass("flip");
   });
+
 }
 
 // functions that needs to run only after everything loads

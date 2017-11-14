@@ -34,6 +34,34 @@ a:hover {
   transition: $g-transition;
 }
 
+[class*="tile"] > li {
+  margin-bottom: 10px;
+}
+
+ul {
+  list-style-type: none;
+}
+
+::-webkit-scrollbar-track
+{
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  border-radius: 3px;
+  background-color: #180003;
+}
+
+::-webkit-scrollbar
+{
+  width: 6px;
+  background-color: #180003;
+}
+
+::-webkit-scrollbar-thumb
+{
+  border-radius: 3px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+  background-color: #B4905C;
+}
+
 .overlay {
   background: 50% 0 no-repeat;
   background-size: cover;
@@ -90,7 +118,19 @@ a:hover {
 
 .flip-container, .front, .back {
   width: 100%;
-  height: auto;
+  height: 480px;
+
+  @include below(mini) {
+    height: 590px;
+  }
+
+  @include below(360px) {
+    height: 570px;
+  }
+
+  @include below(320px) {
+    height: 490px;
+  }
 }
 
 .flip {
@@ -99,14 +139,14 @@ a:hover {
 
 .card {
   background: url('../images/tarot.svg') 50% 0 no-repeat;
-  height: 680px;
 
   text-align: center;
 
   padding: 80px 50px;
+  margin-bottom: 10px;
 
   @include below(mini) {
-    padding: 120px 80px;
+    padding: 90px 80px;
   }
 
   @include below(380px) {
@@ -119,10 +159,12 @@ a:hover {
 
   img {
     width: 140px;
+    max-height: 260px;
     margin-bottom: 20px;
 
     @include below(mini) {
       width: 200px;
+      margin-bottom: 10px;
     }
 
     @include below(360px) {
@@ -131,8 +173,25 @@ a:hover {
 
     @include below(320px) {
       width: 160px;
-      margin-bottom: 10px;
     }
+  }
+
+  p {
+    margin-bottom: 10px;
+  }
+
+  span:after {
+    content: ", ";
+  }
+
+  span:last-child:after {
+    content: "";
+  }
+
+  .card-content {
+    height: 300px;
+    overflow: auto;
+    padding-right: 10px;
   }
 }
 

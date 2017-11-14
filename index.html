@@ -22,50 +22,29 @@
 <body>
 <div id="main-wrapper">
   <div class="overlay" id="wallpaper"></div>
-  <section class="content hide-for-mini">
+  <section class="content">
     <h-row>
       <h-column class="large-12">
-        <h1>Classes</h1>
+        <h1>The <span class="class-total"></span> Class</h1>
       </h-column>
-
-      <h-row>
-        <h-column class="large-3">
-          <div class="flip-container barbarian">
-            <article class="flipper">
-              <div class="front card">
-                <img src="assets/images/barbarian.png">
-                <h2>Barbarian</h2>
-              </div>
-
-              <div class="back card">
-                back
-              </div>
-            </article>
-          </div>
-        </h-column>
-      </h-row>
     </h-row>
-  </section>
 
-  <section class="mobile-content show-for-mini">
-    <nav class="mobile-menu">
-      <h2>Classes <span class="lnr lnr-menu"></span></h2>
-    </nav>
-
-    <nav class="menu-toggle">
-      <a>Class name</a>
-    </nav>
     <h-row>
-      <h-column class="small-12">
-        <div class="flip-container barbarian">
+      <h-column class="large-3 centered">
+        <div class="flip-container">
           <article class="flipper">
             <div class="front card">
-              <img src="assets/images/barbarian.png">
-              <h2>Barbarian</h2>
+              <div id="class-symbol"></div>
+              <h2 id="class-name"></h2>
             </div>
 
             <div class="back card">
-              back
+              <div class="card-content">
+                <p id="hit-die"><strong>Hit Die:</strong> </p>
+                <p id="classes"></p>
+                <p id="saving-throws"><strong>Saving Throws:</strong> </p>
+                <p id="subclasses"><strong>Sub-classes:</strong> </p>
+              </div>
             </div>
           </article>
         </div>
