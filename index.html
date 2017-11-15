@@ -14,6 +14,7 @@
 
   <!-- STYLESHEET -->
   <link rel="stylesheet" href="assets/css/framework.css">
+  <link rel="stylesheet" href="assets/css/lity.min.css">
   <link rel="stylesheet" href="assets/css/app.css">
   <link href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
@@ -25,12 +26,13 @@
   <section class="content">
     <h-row>
       <h-column class="large-12">
-        <h1>The <span class="class-total"></span> Class</h1>
+        <h1>The <span id="class-total"></span> Class</h1>
+        <a class="button" id="reload">View Another Class</a>
       </h-column>
     </h-row>
 
     <h-row>
-      <h-column class="large-3 centered">
+      <h-column class="large-4 centered">
         <div class="flip-container">
           <article class="flipper">
             <div class="front card">
@@ -40,13 +42,22 @@
 
             <div class="back card">
               <div class="card-content">
-                <p id="hit-die"><strong>Hit Die:</strong> </p>
-                <p id="classes"></p>
-                <p id="saving-throws"><strong>Saving Throws:</strong> </p>
-                <p id="subclasses"><strong>Sub-classes:</strong> </p>
+                <p><strong>Hit Die: <span id="hit-die"></span></strong> </p>
+                <p><strong>Proficiencies: <span id="proficiencies"></span></strong> </p>
+                <p><strong>Saving Throws: <span id="saving-throws"></span></strong> </p>
+                <p><strong>Starting Equipment: <span id="starting-eq"></span></strong> </p>
+                <p><strong>Sub-classes: <span id="subclasses"></span></strong> </p>
               </div>
             </div>
           </article>
+        </div>
+
+        <a data-lity href="#skills" class="button">View Skills</a>
+
+        <div class="hide">
+          <ul id="skills">
+            <p><strong>Skills:</strong></p>
+          </ul>
         </div>
       </h-column>
     </h-row>
@@ -60,21 +71,10 @@
 <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
 <script src="assets/js/vendor/jquery.min.js"></script>
 
+<script src="assets/js/vendor/lity.min.js"></script>
 <script src="assets/js/vendor/fastclick.min.js"></script>
 <script src="assets/js/vendor/myapp.js"></script>
 <script src="assets/js/app.js"></script>
 
 </body>
 </html>
-
-<!-- NOTES: Did a crash course on RestfulAPI, and also on Github Pages. Was very very interesting and challenging. :D -->
-
-<!-- 
-  Credits:
-  Dungeon & Dragons Fan Kit: http://dnd.wizards.com/articles/features/fan-site-kit
-  Dungeon & Dragons Wallpapers: http://dnd.wizards.com/articles/media-resources/wallpapers
-  Dungeon & Dragons Favicon
-  Tarot Card Image: https://www.vecteezy.com/vector-art/127516-free-tarot-card-back-design-vector
-  Framework: https://github.com/hrsetyono/edje
-  Card Flip Tutorial (I edited it to toggle on click): https://davidwalsh.name/css-flip
--->

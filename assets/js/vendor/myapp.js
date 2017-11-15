@@ -1,4 +1,4 @@
-var base = "https://www.dnd5eapi.co/api/";
+var base = "http://www.dnd5eapi.co/api/";
 var randomNumber;
 
 $.ajax({
@@ -29,16 +29,25 @@ function loadSkills(id) {
           // hotfix for class 6
           if (skills[j].name == undefined) {
             for (x in skills[j].from) {
-              $("#classes").append("<span>" + skills[j][x].name + "</span>");
+              $("#skills").append("<li>" + skills[j][x].name + "</li>");
             }
           } else {
-            for (x in skills[j]) {
-              $("#classes").append("<span>" + skills[j].name + "</span>");
-            }
+            $("#skills").append("<li>" + skills[j].name + "</li>");
           }
         }
       }
     }      
+  });
+}
+
+function loadProficiencies(id) {
+  $.ajax({
+    url: base + "classes/" + id
+  }).then(function(data) {
+    if (data != null)
+      for (i in data.proficiencies) {
+        $("#proficiencies").append("<span>" + data.proficiencies[i].name + "</span>");
+      }
   });
 }
 
@@ -49,6 +58,17 @@ function loadSavingThrows(id) {
     if (data != null)
       for (i in data.saving_throws) {
         $("#saving-throws").append("<span>" + data.saving_throws[i].name + "</span>");
+      }
+  });
+}
+
+function loadEquipment(id) {
+  $.ajax({
+    url: base + "startingequipment/" + id
+  }).then(function(data) {
+    if (data != null)
+      for (i in data.starting_equipment) {
+        $("#equipment").append("<span>" + data.starting_equipment[i].item.name + "</span>");
       }
   });
 }
@@ -64,24 +84,51 @@ function loadSubClass(id) {
   });
 }
 
-$(document).ready(function() {
+function newClass() {
   $.ajax({
     url: base + "classes/",
-  }).then(function(data) {
-    randomNumber = Math.floor((Math.random() * data.count));
-    $.ajax({
-      url: base + "classes/" + randomNumber,
-      success: function(data) {
-        $(".class-total").append(data.name);
-        var symbol = "<img src='assets/images/" + data.name + "-smol.png'>";
-        $("#class-symbol").append(symbol);
-        $("#class-name").append(data.name);
-
-        loadHitDie(randomNumber);
-        loadSkills(randomNumber);
-        loadSavingThrows(randomNumber);
-        loadSubClass(randomNumber);
-      }
-    });
+    success: function(data) {
+      randomNumber = Math.floor((Math.random() * data.count));
+      init();
+    }
   });
+}
+
+function init() {
+  $.ajax({
+    url: base + "classes/" + randomNumber,
+    success: function(data) {
+      if (data == null) {
+        location.reload();
+      }
+      $("#class-total").append(data.name);
+      var symbol = "<img src='assets/images/" + data.name + "-smol.png'>";
+      $("#class-symbol").append(symbol);
+      $("#class-name").append(data.name);
+
+      loadHitDie(randomNumber);
+      loadSkills(randomNumber);
+      loadProficiencies(randomNumber);
+      loadSavingThrows(randomNumber);
+      loadSubClass(randomNumber);
+    }
+  });
+}
+
+function resetData() {
+  $("#class-total").empty();
+  $("#class-symbol").empty();
+  $("#class-name").empty();
+  $("#subclasses").empty();
+  $("#equipment").empty();
+  $("#saving-throws").empty();
+  $("#proficiencies").empty();
+  $("#skills").empty();
+  $("#hit-die").empty();
+  newClass();
+}
+
+$(document).ready(function() {
+  newClass();
+  $("#reload").on("click", resetData);
 });

@@ -43,16 +43,18 @@ a.button, // more specific to override `.post-content a`
   display: inline-block;
   outline: none;
   padding: 8px 15px;
-  border: 1px solid $color-main;
-  background-color: $color-main;
+  border: 1px solid $color-red;
+  background-color: $color-red;
   color: white;
   text-decoration: none;
 
   border-radius: $g-radius;
   transition: none;
 
+  margin-top: 20px;
+
   &:hover {
-    background-color: $color-main-dark;
+    background-color: lighten($color-red, 10%);
   }
 
   &:active {
