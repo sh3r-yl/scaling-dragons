@@ -4,7 +4,7 @@ var randomNumber;
 $.ajax({
   url: base + "classes/",
   success: function(data) {
-    randomNumber = Math.floor((Math.random() * data.count));
+    randomNumber = Math.ceil((Math.random() * data.count));
   }
 });
 
@@ -30,6 +30,7 @@ function loadSkills(id) {
           if (skills[j].name == undefined) {
             for (x in skills[j].from) {
               $("#skills").append("<li>" + skills[j][x].name + "</li>");
+              console.log(skills[j][x].name);
             }
           } else {
             $("#skills").append("<li>" + skills[j].name + "</li>");
@@ -68,7 +69,7 @@ function loadEquipment(id) {
   }).then(function(data) {
     if (data != null)
       for (i in data.starting_equipment) {
-        $("#equipment").append("<span>" + data.starting_equipment[i].item.name + "</span>");
+        $("#starting-eq").append("<span>" + data.starting_equipment[i].item.name + "</span>");
       }
   });
 }
@@ -109,6 +110,7 @@ function init() {
       loadHitDie(randomNumber);
       loadSkills(randomNumber);
       loadProficiencies(randomNumber);
+      loadEquipment(randomNumber);
       loadSavingThrows(randomNumber);
       loadSubClass(randomNumber);
     }
@@ -120,7 +122,7 @@ function resetData() {
   $("#class-symbol").empty();
   $("#class-name").empty();
   $("#subclasses").empty();
-  $("#equipment").empty();
+  $("#starting-eq").empty();
   $("#saving-throws").empty();
   $("#proficiencies").empty();
   $("#skills").empty();
